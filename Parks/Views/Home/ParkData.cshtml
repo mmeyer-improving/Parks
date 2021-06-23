@@ -4,11 +4,18 @@
 
 <h1 class="display-4">Parks</h1>
 
-@foreach (var park in ViewBag.Data)
+@if (ViewBag.Data.Count != 0)
 {
-    <hr style="height:1px;border:none;color:#333;background-color:#333;" />
-    <h3>@park.ParkName</h3>
-    <p><em>Borough: </em>@park.Borough</p>
-    <p><em>Acres: </em>@park.Acres</p>
-    <p><em>Description: </em><br />@Html.Raw(park.Description)</p>
-}
+    @foreach (var park in ViewBag.Data)
+    {
+        <hr style="height:1px;border:none;color:#333;background-color:#333;" />
+        <h3>@park.ParkName</h3>
+        <p><em>Borough: </em>@park.Borough</p>
+        <p><em>Acres: </em>@park.Acres</p>
+        <p><em>Description: </em><br />@Html.Raw(park.Description)</p>
+    }
+} 
+else
+            {
+    <h3>That search brings back no parks.</h3>
+            }
