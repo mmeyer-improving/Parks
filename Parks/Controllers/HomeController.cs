@@ -13,11 +13,13 @@ namespace Parks.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly ParkSearcher _searcher;
         static readonly HttpClient client = new HttpClient();
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, ParkSearcher searcher)
         {
             _logger = logger;
+            _searcher = searcher;
         }
 
         public IActionResult Index()
@@ -25,12 +27,17 @@ namespace Parks.Controllers
             return View();
         }
 
-        public async Task<IActionResult> ParkData()
+        public IActionResult ParkData(string? search)
         {
-            var path = Request.Path;
-            var query = Request.Query;
-            var life = 42;
-            //ViewBag.Data = await client.GetAsync(Request.Path);
+            if (String.IsNullOrEmpty(search))
+            {
+                ViewBag.Data = _searcher.GetParks(client);
+            }
+            else 
+            {
+                ViewBag.Data = _searcher.GetParks(client, search);
+            }
+
             return View("ParkData");
         }
 

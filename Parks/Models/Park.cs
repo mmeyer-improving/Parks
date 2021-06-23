@@ -8,12 +8,12 @@ namespace Parks.Models
     public class Park
     {
         public string ParkID { get; set; }
-        public string Parkname { get; set; }
+        public string ParkName { get; set; }
         public string SanctuaryName { get; set; }
         public string Borough { get; set; }
         public string Acres { get; set; }
         public string Directions { get; set; }
-        public string description { get; set; }
+        public string Description { get; set; }
         public string HabitatType { get; set; }
     }
 }

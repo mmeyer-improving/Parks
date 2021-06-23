@@ -9,24 +9,23 @@ namespace Parks.Models
 {
     public class ParkSearcher
     {
-        private List<Park> _parkList = new List<Park>();
-
-        public ParkSearcher(HttpClient client)
+        public List<Park> GetParks (HttpClient client)
         {
-
-        }
-
-        public async Task<List<Park>> GetParks (HttpClient client)
-        {
-            var jObject = await client.GetAsync("https://seriouslyfundata.azurewebsites.net/api/parks");
-            List<Park> parkList = JsonConvert.DeserializeObject<List<Park>>(jObject);
-        }
-
-        public List<Park> GetEntityReferences()
-        {
-            
-
+            var response = client.GetAsync("https://seriouslyfundata.azurewebsites.net/api/parks").Result;
+            string responseBody = response.Content.ReadAsStringAsync().Result;
+            List<Park> parkList = JsonConvert.DeserializeObject<List<Park>>(responseBody);
             return parkList;
+        }
+
+        public List<Park> GetParks (HttpClient client, string searchTerm)
+        {
+            var response = client.GetAsync("https://seriouslyfundata.azurewebsites.net/api/parks").Result;
+            string responseBody = response.Content.ReadAsStringAsync().Result;
+            List<Park> parkList = JsonConvert.DeserializeObject<List<Park>>(responseBody);
+            var filteredList = from Park park in parkList
+                           where park.ParkName.Contains(searchTerm) || park.Description.Contains(searchTerm)
+                           select park;
+            return filteredList.ToList();
         }
     }
 }

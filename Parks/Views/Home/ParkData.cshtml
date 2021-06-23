@@ -3,3 +3,8 @@
 }
 
 <h1>Hello</h1>
+
+@foreach (var park in ViewBag.Data)
+            {
+                <p>@park.ParkName</p>
+            }
