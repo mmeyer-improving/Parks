@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "kWiuUA/+Ej1qWbnR3IfeM8FVx7/pyzhAIt4Ulvl0cVkvSuk+OQZtYn0wnW1jnABQ91nN8e4/B9AJ5WrV0SkoOg==",
+  "dgSpecHash": "9Wsi+EUmYrTgNC10VNlaFtg3zHoHNw9En3iR9jf+L9NU09VduKh6a7mQZPdeKawl/7gwuiyTxqrLOJ+SfOWY4g==",
   "success": true,
   "projectFilePath": "C:\\Users\\MichaelMeyer\\source\\repos\\Parks\\Parks\\Parks.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\MichaelMeyer\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
+  ],
   "logs": []
 }
