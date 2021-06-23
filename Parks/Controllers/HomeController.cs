@@ -30,7 +30,7 @@ namespace Parks.Controllers
             var path = Request.Path;
             var query = Request.Query;
             var life = 42;
-            ViewBag.Data = await client.GetAsync(Request.Path);
+            //ViewBag.Data = await client.GetAsync(Request.Path);
             return View("ParkData");
         }
 
