@@ -17,11 +17,8 @@ namespace Parks.Models
             return parkList;
         }
 
-        public List<Park> GetParks (HttpClient client, string searchTerm)
+        public List<Park> GetParks (List<Park> parkList, string searchTerm)
         {
-            var response = client.GetAsync("https://seriouslyfundata.azurewebsites.net/api/parks").Result;
-            string responseBody = response.Content.ReadAsStringAsync().Result;
-            List<Park> parkList = JsonConvert.DeserializeObject<List<Park>>(responseBody);
             var filteredList = from Park park in parkList
                            where park.ParkName.Contains(searchTerm) || park.Description.Contains(searchTerm)
                            select park;
