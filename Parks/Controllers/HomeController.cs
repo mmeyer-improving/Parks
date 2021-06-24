@@ -41,7 +41,7 @@ namespace Parks.Controllers
                 parkList = _searcher.GetParks(client);
 
                 // Save data in cache and set the relative expiration time to one day
-                _cache.Set("_ParkList", parkList, TimeSpan.FromSeconds(15));
+                _cache.Set("_ParkList", parkList, TimeSpan.FromDays(7));
             }
 
 
