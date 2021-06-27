@@ -4,6 +4,12 @@
 
 <h1 class="display-4">Parks</h1>
 
+<form>
+    <input asp-controller="Home" asp-action="ParkData" name="search" defaultbutton="submitButton" /> <br />
+    <button id="submitButton" style="display: none;" >Submit</button>
+</form>
+
+
 @if (ViewBag.Data.Count != 0)
 {
     @foreach (var park in ViewBag.Data)

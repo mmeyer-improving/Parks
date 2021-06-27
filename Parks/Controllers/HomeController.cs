@@ -57,6 +57,13 @@ namespace Parks.Controllers
             return View("ParkData");
         }
 
+       /* public Task<IActionResult> ParkDataJS (string? search)
+        {
+
+
+            return View("ParkDataJS");
+        }*/
+
         public IActionResult Privacy()
         {
             return View();

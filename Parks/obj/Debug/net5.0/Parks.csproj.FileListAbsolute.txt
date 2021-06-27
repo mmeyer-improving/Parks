@@ -40,3 +40,4 @@ C:\Users\MichaelMeyer\source\repos\Parks\Parks\obj\Debug\net5.0\Parks.pdb
 C:\Users\MichaelMeyer\source\repos\Parks\Parks\obj\Debug\net5.0\Parks.genruntimeconfig.cache
 C:\Users\MichaelMeyer\source\repos\Parks\Parks\obj\Debug\net5.0\Parks.csproj.CopyComplete
 C:\Users\MichaelMeyer\source\repos\Parks\Parks\bin\Debug\net5.0\Newtonsoft.Json.dll
+C:\Users\MichaelMeyer\source\repos\Parks\Parks\obj\Debug\net5.0\Razor\Views\Home\ParkDataJS.cshtml.g.cs
