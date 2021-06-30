@@ -5,7 +5,6 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Logging;
 using Parks.Models;
 
@@ -15,14 +14,11 @@ namespace Parks.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly ParkSearcher _searcher;
-        static readonly HttpClient client = new HttpClient();
-        private IMemoryCache _cache;
 
-        public HomeController(ILogger<HomeController> logger, ParkSearcher searcher, IMemoryCache memoryCache)
+        public HomeController(ILogger<HomeController> logger, ParkSearcher searcher)
         {
             _logger = logger;
             _searcher = searcher;
-            _cache = memoryCache;
         }
 
         public IActionResult Index()
@@ -32,17 +28,7 @@ namespace Parks.Controllers
 
         public IActionResult ParkData(string? search)
         {
-            List<Park> parkList;
-
-            // Look for cache key.
-            if (!_cache.TryGetValue("_ParkList", out parkList))
-            {
-                // Key not in cache, so get data.
-                parkList = _searcher.GetParks(client);
-
-                // Save data in cache and set the relative expiration time to one day
-                _cache.Set("_ParkList", parkList, TimeSpan.FromDays(7));
-            }
+            List<Park> parkList = _searcher.GetParks();
 
 
             if (String.IsNullOrEmpty(search))
@@ -57,11 +43,11 @@ namespace Parks.Controllers
             return View("ParkData");
         }
 
-       /* public Task<IActionResult> ParkDataJS (string? search)
+        /*public Task<IActionResult> ParkDataJS(string? search)
         {
+            var data = await _searcher.getParks();
 
-
-            return View("ParkDataJS");
+            return Json(data);
         }*/
 
         public IActionResult Privacy()
