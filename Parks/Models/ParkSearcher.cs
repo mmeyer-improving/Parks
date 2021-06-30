@@ -18,10 +18,8 @@ namespace Parks.Models
             _cache = memoryCache;
         }
 
-        //TODO: Refactor code so that caching check goes in here, neither current method requires HttpClient or the list of parks
-        //Because it can be retrieved from the cache, no need to do that in the controller and then pass it in here
-        //Can't think right now but may require addScoped? check out link eric sent in teams on 6/24
-        public List<Park> GetParks ()
+
+        public async Task<List<Park>> GetParks ()
         {
             List<Park> parkList;
 

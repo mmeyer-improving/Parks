@@ -51,8 +51,20 @@ namespace Parks
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
+                    name: "parksAPI",
+                    pattern: "parksAJAX",
+                    defaults: new { controller = "Home", action = "ParkDataAJAX" }
+                    );
+
+                endpoints.MapControllerRoute(
+                    name: "parksJS",
+                    pattern: "parks",
+                    defaults: new { controller = "Home", action = "ParkDataJS"}
+                    );
+
+                endpoints.MapControllerRoute(
                     name: "parkdata",
-                    pattern: "{action=ParkData}",
+                    pattern: "parkdata",
                     defaults: new { controller = "Home", action = "ParkData" });
             });
         }

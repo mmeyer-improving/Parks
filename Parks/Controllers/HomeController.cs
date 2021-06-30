@@ -26,9 +26,9 @@ namespace Parks.Controllers
             return View();
         }
 
-        public IActionResult ParkData(string? search)
+        public async Task<IActionResult> ParkData(string? search)
         {
-            List<Park> parkList = _searcher.GetParks();
+            List<Park> parkList = await _searcher.GetParks();
 
 
             if (String.IsNullOrEmpty(search))
@@ -43,12 +43,21 @@ namespace Parks.Controllers
             return View("ParkData");
         }
 
-        /*public Task<IActionResult> ParkDataJS(string? search)
+        public IActionResult ParkDataJS()
         {
-            var data = await _searcher.getParks();
+            return View("ParkDataJS");
+        }
+
+        //TODO: Make one method return empty view, make another asyncronously return JSON
+        //Set up routing for both
+        //In JS on empty page, fetch call to JS route to retrieve json, work with it via script tags from there.
+
+        public async Task<IActionResult> ParkDataAJAX(string? search)
+        {
+            var data = await _searcher.GetParks();
 
             return Json(data);
-        }*/
+        }
 
         public IActionResult Privacy()
         {
